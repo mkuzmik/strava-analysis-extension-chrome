@@ -2,15 +2,28 @@
 <html>
 <head>
     <style>
-        button {
-            height: 30px;
-            width: 30px;
-            outline: none;
+        body {
+            width: 200px;
+            height: 100px;
+        }
+
+        p, label {
+            font: 1rem 'Fira Sans', sans-serif;
+        }
+
+        input {
+            margin: .4rem;
         }
     </style>
 </head>
 <body>
-<button id="changeColor"></button>
+<p>Data fields:</p>
+
+<div>
+    <input type="checkbox" id="normalized_power" name="normalized_power">
+    <label for="normalized_power">Normalized Power (NP)</label>
+</div>
+
 <script src="popup.js"></script>
 </body>
 </html>

@@ -1,15 +1,11 @@
-let changeColor = document.getElementById('changeColor');
+let normalizedPowerCheckbox = document.getElementById('normalized_power');
 
-chrome.storage.sync.get('color', function(data) {
-    changeColor.style.backgroundColor = data.color;
-    changeColor.setAttribute('value', data.color);
+chrome.storage.sync.get('normalizedPower', function (data) {
+    normalizedPowerCheckbox.checked = data.normalizedPower;
 });
 
-changeColor.onclick = function(element) {
-    let color = element.target.value;
-    chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
-        chrome.tabs.executeScript(
-            tabs[0].id,
-            {code: 'document.body.style.backgroundColor = "' + color + '";'});
+normalizedPowerCheckbox.onclick = function () {
+    chrome.storage.sync.set({normalizedPower: normalizedPowerCheckbox.checked}, function () {
+        console.log(`Normalized power: ${normalizedPowerCheckbox.checked}`);
     });
 };
