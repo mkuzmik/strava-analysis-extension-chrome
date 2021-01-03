@@ -2,7 +2,12 @@
   "name": "Strava analysis extension",
   "version": "0.1",
   "description": "Bring your analysis to the new level!",
-  "permissions": ["activeTab", "declarativeContent", "storage"],
+  "permissions": [
+    "activeTab",
+    "declarativeContent",
+    "storage",
+    "tabs"
+  ],
   "background": {
     "scripts": ["background.js"],
     "persistent": false
@@ -10,6 +15,16 @@
   "page_action": {
     "default_popup": "popup.html"
   },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://*.strava.com/activities/*",
+        "https://*.strava.com/activities/*/analysis",
+        "https://*.strava.com/activities/*/analysis/*/*"
+      ],
+      "js": ["contentScript.js"]
+    }
+  ],
   "manifest_version": 2
 }
 
